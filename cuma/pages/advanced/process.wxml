@@ -1,0 +1,96 @@
+<view class="container">
+  <!-- 图片预览区域 -->
+  <view class="image-preview">
+    <image 
+      class="preview-image" 
+      src="{{processedImagePath || imagePath}}" 
+      mode="aspectFit"
+    />
+  </view>
+
+  <!-- 处理控制区域 -->
+  <view class="control-panel">
+    <view class="noise-control">
+      <text class="control-label">噪声强度：{{noiseLevel * 100}}%</text>
+      <slider 
+        class="noise-slider"
+        min="0"
+        max="100"
+        value="{{noiseLevel * 100}}"
+        bindchange="onNoiseChange"
+        disabled="{{processing}}"
+      />
+    </view>
+
+    <view class="button-group">
+      <button 
+        class="process-btn {{processing ? 'disabled' : ''}}"
+        bindtap="onProcessImage"
+        disabled="{{processing}}"
+      >
+        {{processing ? '处理中...' : '处理图片'}}
+      </button>
+
+      <button 
+        class="action-btn"
+        bindtap="onSaveToAlbum"
+        disabled="{{!processedImagePath || processing}}"
+      >
+        保存到相册
+      </button>
+
+      <button 
+        class="action-btn"
+        bindtap="onShareImage"
+        disabled="{{!processedImagePath || processing}}"
+      >
+        分享图片
+      </button>
+    </view>
+  </view>
+
+  <!-- 评估指标弹窗 -->
+  <view class="metrics-popup" wx:if="{{showMetrics}}">
+    <view class="metrics-mask" bindtap="onCloseMetrics"></view>
+    <view class="metrics-content">
+      <view class="metrics-header">
+        <text class="metrics-title">评估指标</text>
+        <text class="close-btn" bindtap="onCloseMetrics">×</text>
+      </view>
+      
+      <view class="metrics-body">
+        <view class="metric-item">
+          <text class="metric-label">L1范数</text>
+          <text class="metric-value">{{metrics.l1Norm.toFixed(2)}}</text>
+        </view>
+        <view class="metric-item">
+          <text class="metric-label">L2范数</text>
+          <text class="metric-value">{{metrics.l2Norm.toFixed(2)}}</text>
+        </view>
+        <view class="metric-item">
+          <text class="metric-label">PSNR</text>
+          <text class="metric-value">{{metrics.psnr.toFixed(2)}} dB</text>
+        </view>
+        <view class="metric-item">
+          <text class="metric-label">SSIM</text>
+          <text class="metric-value">{{metrics.ssim.toFixed(4)}}</text>
+        </view>
+      </view>
+
+      <view class="metrics-footer">
+        <text class="metrics-tips">* 指标说明：</text>
+        <text class="metrics-tips">- L1/L2范数：值越小表示图像质量越好</text>
+        <text class="metrics-tips">- PSNR：值越大表示图像质量越好</text>
+        <text class="metrics-tips">- SSIM：值越接近1表示图像质量越好</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载遮罩 -->
+  <view class="loading-mask" wx:if="{{processing}}">
+    <view class="loading-content">
+      <view class="loading-icon"></view>
+      <text>正在处理图片...</text>
+    </view>
+  </view>
+</view> 

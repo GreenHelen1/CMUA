@@ -1,0 +1,116 @@
+<view class="container">
+  <!-- 顶部横幅 -->
+  <image class="banner" src="{{bannerImage}}" mode="widthFix" />
+  
+  <!-- 处理图片模块 -->
+  <view class="module card">
+    <view class="module-title">处理图片</view>
+    <view class="module-content">
+      <button class="primary-btn" bindtap="onSelectImage">
+        <text class="iconfont icon-image"></text>
+        选择图片
+      </button>
+    </view>
+  </view>
+
+  <!-- 噪声调节模块 -->
+  <view class="module card slider-module">
+    <view class="module-title">调节噪声强度</view>
+    <view class="module-content">
+      <slider 
+        class="noise-slider"
+        min="0" 
+        max="100" 
+        step="1" 
+        value="{{noiseLevel}}"
+        activeColor="#007aff"
+        backgroundColor="#e0e0e0"
+        block-size="24"
+        bindchange="onSliderChange" 
+      />
+      <view class="slider-value">
+        <text>当前强度：{{noiseLevel}}%</text>
+      </view>
+      <view class="slider-tips">
+        <text class="tip-text">较低强度：图像质量更好，但保护效果较弱</text>
+        <text class="tip-text">较高强度：保护效果更强，但可能影响图像质量</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 图片选择弹窗 -->
+  <view class="popup" wx:if="{{showPopup}}">
+    <view class="popup-mask" bindtap="closePopup"></view>
+    <view class="popup-content">
+      <view class="popup-title">选择图片来源</view>
+      <button class="popup-btn" bindtap="takePhoto">
+        <text class="iconfont icon-camera"></text>
+        拍照
+      </button>
+      <button class="popup-btn" bindtap="chooseFromAlbum">
+        <text class="iconfont icon-album"></text>
+        本地图片
+      </button>
+      <button class="popup-btn" bindtap="chooseFromWeChat">
+        <text class="iconfont icon-wechat"></text>
+        微信图片
+      </button>
+      <button class="popup-btn cancel" bindtap="closePopup">取消</button>
+    </view>
+  </view>
+
+  <!-- 加载提示 -->
+  <view class="loading-mask" wx:if="{{processingImage}}">
+    <view class="loading-content">
+      <view class="loading-icon"></view>
+      <text>正在处理图片...</text>
+    </view>
+  </view>
+</view>
+
+pages/home/home.wxss
+.container {
+  padding: 16px;
+}
+.top-banner {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+.card {
+  background-color: #f8f8f8;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+.card-title {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popup-mask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 16px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

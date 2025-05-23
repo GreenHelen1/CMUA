@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="upload-section">
+    <button bindtap="chooseImages">选择图片</button>
+    <scroll-view scroll-x="true" class="image-preview">
+      <image wx:for="{{imagePaths}}" src="{{item}}" class="preview-img" />
+    </scroll-view>
+  </view>
+
+  <view class="slider-section">
+    <text>噪声强度：{{noiseLevel}}</text>
+    <slider min="0" max="100" bindchange="onSliderChange" value="{{noiseLevel}}" />
+  </view>
+
+  <view class="button-group">
+    <button bindtap="uploadImages">上传图片</button>
+    <button bindtap="addWatermark">添加水印</button>
+    <button bindtap="evaluate">评估水印</button>
+  </view>
+</view>

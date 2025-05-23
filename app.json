@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "cuma/pages/home/home",
+    "cuma/pages/images/images",
+    "cuma/pages/advanced/advanced",
+    "cuma/pages/profile/profile"
+  ],
+  "window": {
+    "navigationBarTitleText": "对抗性水印小程序",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": false,
+    "color": "#999999",
+    "selectedColor": "#007aff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "cuma/pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "cuma/pages/images/images",
+        "text": "图片"
+      },
+      {
+        "pagePath": "cuma/pages/advanced/advanced",
+        "text": "高级"
+      },
+      {
+        "pagePath": "cuma/pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+} 
