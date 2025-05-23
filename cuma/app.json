@@ -3,7 +3,9 @@
       "pages/home/home",
       "pages/images/images",
       "pages/advanced/advanced",
-      "pages/profile/profile"
+      "pages/profile/profile",
+      "pages/advanced/process",
+      "pages/advanced/batch"
     ],
     "window": {
       "navigationBarTitleText": "对抗性水印小程序",

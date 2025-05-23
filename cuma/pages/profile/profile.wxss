@@ -1,1 +1,119 @@
 /* pages/profile/profile.wxss */
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 40rpx;
+}
+
+/* 用户信息区域样式 */
+.user-info-section {
+  background: #fff;
+  padding: 40rpx 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 75rpx;
+  margin-bottom: 20rpx;
+}
+
+.nickname {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.login-btn {
+  margin-top: 20rpx;
+  background: #007aff;
+  color: #fff;
+  font-size: 28rpx;
+  padding: 10rpx 40rpx;
+  border-radius: 30rpx;
+  border: none;
+}
+
+.login-btn::after {
+  border: none;
+}
+
+/* 功能列表样式 */
+.function-list {
+  background: #fff;
+  margin-bottom: 40rpx;
+}
+
+.function-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.function-item:last-child {
+  border-bottom: none;
+}
+
+.function-content {
+  display: flex;
+  align-items: center;
+}
+
+.function-content .iconfont {
+  font-size: 40rpx;
+  margin-right: 20rpx;
+  color: #007aff;
+}
+
+.function-name {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.icon-arrow {
+  font-size: 32rpx;
+  color: #999;
+}
+
+/* 退出登录按钮样式 */
+.logout-section {
+  padding: 0 30rpx;
+}
+
+.logout-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  background: #fff;
+  color: #ff4d4f;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+  border: none;
+}
+
+.logout-btn::after {
+  border: none;
+}
+
+/* 图标颜色 */
+.icon-service {
+  color: #007aff;
+}
+
+.icon-help {
+  color: #52c41a;
+}
+
+.icon-delete {
+  color: #ff4d4f;
+}

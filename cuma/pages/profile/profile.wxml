@@ -1,2 +1,50 @@
 <!--pages/profile/profile.wxml-->
-<text>pages/profile/profile.wxml</text>
+<view class="container">
+  <!-- 用户信息区域 -->
+  <view class="user-info-section">
+    <view class="user-info" wx:if="{{hasUserInfo}}">
+      <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill" />
+      <text class="nickname">{{userInfo.nickName}}</text>
+    </view>
+    <view class="user-info" wx:else>
+      <image class="avatar" src="/cuma/assets/default-avatar.png" mode="aspectFill" />
+      <button 
+        class="login-btn" 
+        bindtap="getUserProfile"
+        wx:if="{{canIUseGetUserProfile}}"
+      >点击登录</button>
+    </view>
+  </view>
+
+  <!-- 功能列表 -->
+  <view class="function-list">
+    <view class="function-item" bindtap="contactService">
+      <view class="function-content">
+        <text class="iconfont icon-service"></text>
+        <text class="function-name">联系客服</text>
+      </view>
+      <text class="iconfont icon-arrow"></text>
+    </view>
+
+    <view class="function-item" bindtap="showHelp">
+      <view class="function-content">
+        <text class="iconfont icon-help"></text>
+        <text class="function-name">使用帮助</text>
+      </view>
+      <text class="iconfont icon-arrow"></text>
+    </view>
+
+    <view class="function-item" bindtap="deleteAccount">
+      <view class="function-content">
+        <text class="iconfont icon-delete"></text>
+        <text class="function-name">注销账户</text>
+      </view>
+      <text class="iconfont icon-arrow"></text>
+    </view>
+  </view>
+
+  <!-- 退出登录按钮 -->
+  <view class="logout-section" wx:if="{{hasUserInfo}}">
+    <button class="logout-btn" type="warn" bindtap="logout">退出登录</button>
+  </view>
+</view>

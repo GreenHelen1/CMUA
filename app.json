@@ -3,6 +3,7 @@
     "cuma/pages/home/home",
     "cuma/pages/images/images",
     "cuma/pages/advanced/advanced",
+    "cuma/pages/advanced/process",
     "cuma/pages/profile/profile"
   ],
   "window": {
