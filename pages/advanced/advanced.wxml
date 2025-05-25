@@ -1,0 +1,73 @@
+<!--pages/advanced/advanced.wxml-->
+<view class="container">
+  <!-- 批量上传模块 -->
+  <view class="batch-upload-section">
+    <view class="section-title">批量上传图片</view>
+    <view class="upload-area" bindtap="chooseBatchImages">
+      <view class="upload-content" wx:if="{{batchImages.length === 0}}">
+        <text class="iconfont icon-upload"></text>
+        <text>点击选择图片</text>
+        <text class="upload-tip">最多可选择9张图片</text>
+      </view>
+      <view class="selected-images" wx:else>
+        <view class="image-preview" wx:for="{{batchImages}}" wx:key="path">
+          <image src="{{item.path}}" mode="aspectFill" />
+          <text class="image-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+    <button 
+      class="process-btn" 
+      type="primary" 
+      bindtap="processBatchImages"
+      disabled="{{batchImages.length === 0 || processing}}"
+    >
+      {{processing ? '处理中...' : '开始处理'}}
+    </button>
+  </view>
+
+  <!-- 评估结果模块 -->
+  <view class="evaluation-section">
+    <view class="section-title">评估结果</view>
+    <view class="results-list" wx:if="{{evaluationResults.length > 0}}">
+      <view class="result-item" wx:for="{{evaluationResults}}" wx:key="path">
+        <view class="result-header">
+          <image 
+            src="{{item.path}}" 
+            mode="aspectFill" 
+            bindtap="previewImage" 
+            data-url="{{item.path}}"
+          />
+          <view class="result-info">
+            <text class="result-date">{{item.date}}</text>
+            <view class="delete-btn" catchtap="deleteResult" data-index="{{index}}">
+              <text class="iconfont icon-delete"></text>
+            </view>
+          </view>
+        </view>
+        <view class="metrics-grid">
+          <view class="metric-item">
+            <text class="metric-label">L1范数</text>
+            <text class="metric-value">{{item.metrics.l1Norm}}</text>
+          </view>
+          <view class="metric-item">
+            <text class="metric-label">L2范数</text>
+            <text class="metric-value">{{item.metrics.l2Norm}}</text>
+          </view>
+          <view class="metric-item">
+            <text class="metric-label">PSNR</text>
+            <text class="metric-value">{{item.metrics.psnr}}dB</text>
+          </view>
+          <view class="metric-item">
+            <text class="metric-label">SSIM</text>
+            <text class="metric-value">{{item.metrics.ssim}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="empty-state" wx:if="{{!images.length}}">
+      <image src="/images/empty.png" mode="aspectFit" />
+      <text>暂无图片</text>
+    </view>
+  </view>
+</view>

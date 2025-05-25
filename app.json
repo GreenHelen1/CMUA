@@ -1,10 +1,11 @@
 {
   "pages": [
-    "cuma/pages/home/home",
-    "cuma/pages/images/images",
-    "cuma/pages/advanced/advanced",
-    "cuma/pages/advanced/process",
-    "cuma/pages/profile/profile"
+    "pages/home/home",
+    "pages/images/images",
+    "pages/advanced/advanced",
+    "pages/advanced/process",
+    "pages/advanced/batch",
+    "pages/profile/profile"
   ],
   "window": {
     "navigationBarTitleText": "对抗性水印小程序",
@@ -19,20 +20,28 @@
     "borderStyle": "white",
     "list": [
       {
-        "pagePath": "cuma/pages/home/home",
-        "text": "首页"
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "/images/tabbar/home.png",
+        "selectedIconPath": "/images/tabbar/home-active.png"
       },
       {
-        "pagePath": "cuma/pages/images/images",
-        "text": "图片"
+        "pagePath": "pages/images/images",
+        "text": "图片",
+        "iconPath": "/images/tabbar/image.png",
+        "selectedIconPath": "/images/tabbar/image-active.png"
       },
       {
-        "pagePath": "cuma/pages/advanced/advanced",
-        "text": "高级"
+        "pagePath": "pages/advanced/advanced",
+        "text": "高级",
+        "iconPath": "/images/tabbar/setting.png",
+        "selectedIconPath": "/images/tabbar/setting-active.png"
       },
       {
-        "pagePath": "cuma/pages/profile/profile",
-        "text": "我的"
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "/images/tabbar/user.png",
+        "selectedIconPath": "/images/tabbar/user-active.png"
       }
     ]
   },
